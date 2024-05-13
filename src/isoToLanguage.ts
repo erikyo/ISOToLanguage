@@ -1,1 +1,1 @@
-export * as isoToLanguage from './index'
+export * as isoToLanguage from "./index";

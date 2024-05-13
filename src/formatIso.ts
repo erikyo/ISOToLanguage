@@ -1,8 +1,8 @@
-import { getSeparator } from './utils'
-import { tryCountriesFallback } from './fallbacks'
-import { validateISO } from './validation'
-import { getIso } from './getIso'
-import { IsoCodeFormat } from './types'
+import { tryCountriesFallback } from "./fallbacks";
+import { getIso } from "./getIso";
+import type { IsoCodeFormat } from "./types";
+import { getSeparator } from "./utils";
+import { validateISO } from "./validation";
 
 /**
  * Formats the language and country into a single string.
@@ -13,31 +13,33 @@ import { IsoCodeFormat } from './types'
  * @returns The formatted string combining the language and country code.
  */
 export function formatIso(
-    language: string | undefined,
-    country?: string | undefined,
-    separator?: string | IsoCodeFormat
+	language: string | undefined,
+	country?: string | undefined,
+	separator?: string | IsoCodeFormat,
 ): string | false {
-    let isoLanguage = language && validateISO(language, 'language') ? language : undefined
-    let isoCountry = country && validateISO(country, 'country') ? country : undefined
-    separator = getSeparator(separator)
+	let isoLanguage =
+		language && validateISO(language, "language") ? language : undefined;
+	let isoCountry =
+		country && validateISO(country, "country") ? country : undefined;
+	separator = getSeparator(separator);
 
-    if (!isoLanguage && language) {
-        isoLanguage = (getIso(language, 'language', 'iso2') as string) || undefined
-    }
+	if (!isoLanguage && language) {
+		isoLanguage = (getIso(language, "language", "iso2") as string) || undefined;
+	}
 
-    if (!isoCountry && language) {
-        isoCountry = tryCountriesFallback(language)
-    }
+	if (!isoCountry && language) {
+		isoCountry = tryCountriesFallback(language);
+	}
 
-    if (!isoCountry && country) {
-        isoCountry = (getIso(country, 'country', 'iso2') as string) || undefined
-    }
+	if (!isoCountry && country) {
+		isoCountry = (getIso(country, "country", "iso2") as string) || undefined;
+	}
 
-    // Return the formatted string if both language and country are found
-    if (!!isoLanguage && !!separator && !!isoCountry) {
-        return isoLanguage + separator + isoCountry
-    }
+	// Return the formatted string if both language and country are found
+	if (!!isoLanguage && !!separator && !!isoCountry) {
+		return isoLanguage + separator + isoCountry;
+	}
 
-    // Return false if either language or country is not found
-    return false
+	// Return false if either language or country is not found
+	return false;
 }

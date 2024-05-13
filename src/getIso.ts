@@ -1,15 +1,15 @@
-import {
-    CountryDataExtended,
-    CountryDataFields,
-    CountryExtendedFields,
-    ISOCountryCode,
-    ISOLangCode,
-    IsoType,
-    LanguageData,
-    LanguageDataFields,
-} from './types'
-import { getLanguage } from './getLanguage'
-import { getCountry } from './getCountry'
+import { getCountry } from "./getCountry";
+import { getLanguage } from "./getLanguage";
+import type {
+	CountryDataExtended,
+	CountryDataFields,
+	CountryExtendedFields,
+	ISOCountryCode,
+	ISOLangCode,
+	IsoType,
+	LanguageData,
+	LanguageDataFields,
+} from "./types";
 
 /**
  * Retrieves the ISO value for a given code, type, and fields.
@@ -20,45 +20,45 @@ import { getCountry } from './getCountry'
  * @return {string | ISOLanguage | ISOCountry | false} - The ISO value corresponding to the given code, type, and fields.
  */
 export function getIso(
-    code: string,
-    type?: IsoType,
-    fields?:
-        | string
-        | string[]
-        | CountryDataFields
-        | CountryDataFields[]
-        | LanguageDataFields
-        | LanguageDataFields[]
+	code: string,
+	type?: IsoType,
+	fields?:
+		| string
+		| string[]
+		| CountryDataFields
+		| CountryDataFields[]
+		| LanguageDataFields
+		| LanguageDataFields[],
 ):
-    | string
-    | string[]
-    | number[]
-    | LanguageData
-    | LanguageData[]
-    | CountryExtendedFields
-    | Partial<CountryDataExtended>
-    | ISOLangCode
-    | ISOCountryCode
-    | false {
-    // if the type is not defined, find the language or country based on the fields
-    if (!type) {
-        // try first to get the language
-        const lang = getLanguage(code, fields)
-        if (lang) return lang
+	| string
+	| string[]
+	| number[]
+	| LanguageData
+	| LanguageData[]
+	| CountryExtendedFields
+	| Partial<CountryDataExtended>
+	| ISOLangCode
+	| ISOCountryCode
+	| false {
+	// if the type is not defined, find the language or country based on the fields
+	if (!type) {
+		// try first to get the language
+		const lang = getLanguage(code, fields);
+		if (lang) return lang;
 
-        // if the language is not found, try to get the country
-        const country = getCountry(code, fields)
-        if (country) return country
+		// if the language is not found, try to get the country
+		const country = getCountry(code, fields);
+		if (country) return country;
 
-        // if the country is not found, return false
-        return false
-    }
+		// if the country is not found, return false
+		return false;
+	}
 
-    // if the type is defined, return the selected data fields
-    switch (type) {
-        case 'language':
-            return getLanguage(code, fields)
-        case 'country':
-            return getCountry(code, fields)
-    }
+	// if the type is defined, return the selected data fields
+	switch (type) {
+		case "language":
+			return getLanguage(code, fields);
+		case "country":
+			return getCountry(code, fields);
+	}
 }
