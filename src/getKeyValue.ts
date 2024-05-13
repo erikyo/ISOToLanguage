@@ -1,6 +1,6 @@
-import type { CountryDataFields } from './types'
-import { countriesIso } from './data/countries-iso'
-import { getIso } from './getIso'
+import { countriesIso } from "./data/countries-iso";
+import { getIso } from "./getIso";
+import type { CountryDataFields } from "./types";
 
 /**
  * Generates an array of objects suitable for React Select options based on the specified field.
@@ -12,40 +12,39 @@ import { getIso } from './getIso'
  * @returns {Object[]} An array of objects suitable for React Select options.
  */
 export function getKeyValue(
-    key: CountryDataFields,
-    value: CountryDataFields,
-    labelKey: string = 'label',
-    valueKey: string = 'value'
+	key: CountryDataFields,
+	value: CountryDataFields,
+	labelKey = "label",
+	valueKey = "value",
 ) {
-    const unpackData = (data: unknown, field?: string): string[] => {
-        if (typeof data === 'string') {
-            return [data]
-        } else if (Array.isArray(data)) {
-            return data.flatMap((item) => unpackData(item, field))
-        } else if (typeof data === 'object' && data !== null) {
-            if (field && field in data) {
-                return [data[field as keyof typeof data]]
-            }
-            return Object.values(data).flatMap((item) => unpackData(item, field))
-        }
-        return data as string[]
-    }
+	const unpackData = (data: unknown, field?: string): string[] => {
+		if (typeof data === "string") {
+			return [data];
+		} else if (Array.isArray(data)) {
+			return data.flatMap((item) => unpackData(item, field));
+		} else if (typeof data === "object" && data !== null) {
+			if (field && field in data) {
+				return [data[field as keyof typeof data]];
+			}
+			return Object.values(data).flatMap((item) => unpackData(item, field));
+		}
+		return data as string[];
+	};
 
-    return Object.entries(countriesIso).flatMap(([iso]) => {
-        const keyValue = getIso(iso, undefined, key)
-        const fieldValue = getIso(iso, undefined, value)
+	return Object.entries(countriesIso).flatMap(([iso]) => {
+		const keyValue = getIso(iso, undefined, key);
+		const fieldValue = getIso(iso, undefined, value);
 
-        const unpackedKeyValues = unpackData(keyValue, key)
-        const unpackedFieldValues = unpackData(fieldValue, value)
+		const unpackedKeyValues = unpackData(keyValue, key);
+		const unpackedFieldValues = unpackData(fieldValue, value);
 
-        if (unpackedKeyValues || unpackedFieldValues) {
-            return unpackedKeyValues?.flatMap(
-                (k: string) =>
-                    unpackedFieldValues?.map((f: string) => ({
-                        [labelKey]: unpackedFieldValues.length > 1 ? `${k}-${f}` : k,
-                        [valueKey]: unpackedKeyValues.length > 1 ? `${f} (${k})` : f,
-                    }))
-            )
-        }
-    })
+		if (unpackedKeyValues || unpackedFieldValues) {
+			return unpackedKeyValues?.flatMap((k: string) =>
+				unpackedFieldValues?.map((f: string) => ({
+					[labelKey]: unpackedFieldValues.length > 1 ? `${k}-${f}` : k,
+					[valueKey]: unpackedKeyValues.length > 1 ? `${f} (${k})` : f,
+				})),
+			);
+		}
+	});
 }
