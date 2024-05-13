@@ -1,100 +1,93 @@
 {
-  "name": "isotolanguage",
-  "version": "1.2.3",
-  "description": "light and fast module to convert iso country and languages codes into country names, there is no unnecessary stuff only the bare essentials",
-  "scripts": {
-    "prepare": "husky install",
-    "lint": "eslint ./src --fix && prettier --write ./src",
-    "build": "pnpm run clean && concurrently pnpm:module-* && concurrently pnpm:types-*",
-    "clean": "node bin/clean.mjs",
-    "module-node": "rollup -c",
-    "module-browser": "npx esbuild src/index.ts --outfile=lib/browser/isoToLanguage.js --global-name=isoToLanguage  --allow-overwrite --bundle --minify --sourcemap",
-    "watch": "npx esbuild src/index.ts --outfile=lib/browser/isoToLanguage.js --global-name=isoToLanguage --allow-overwrite --watch --bundle --sourcemap",
-    "types-cjs": "tsc -p tsconfig.json --module commonjs --emitDeclarationOnly --declaration --declarationDir ./lib/cjs/@types",
-    "types-esm": "tsc -p tsconfig.json --emitDeclarationOnly --declaration --declarationDir ./lib/@types",
-    "test": "jest --coverage"
-  },
-  "license": "ISC",
-  "main": "./lib/cjs/index.js",
-  "type": "module",
-  "unpkg": "lib/browser/ISOToLanguage.js",
-  "jsdelivr": "lib/browser/ISOToLanguage.js",
-  "exports": {
-    ".": {
-      "types": "./lib/cjs/@types/index.d.ts",
-      "require": {
-        "default": "./lib/cjs/index.cjs",
-        "types": "./lib/cjs/@types/index.d.ts"
-      },
-      "import": {
-        "default": "./lib/esm/index.mjs",
-        "types": "./lib/@types/index.d.ts"
-      },
-      "browser": "./lib/browser/ISOToLanguage.js",
-      "umd": "./lib/umd/ISOToLanguage.js",
-      "node": "./lib/umd/ISOToLanguage.js"
-    }
-  },
-  "keywords": [
-    "iso",
-    "language",
-    "country",
-    "country code",
-    "locale format",
-    "IETF",
-    "ISO 3166-1",
-    "language tag"
-  ],
-  "files": [
-    "lib/",
-    "tests/",
-    "docs/",
-    "*.json",
-    ".gitignore",
-    ".eslintrc.js",
-    "LICENSE",
-    "README.md"
-  ],
-  "author": "Erik Golinelli <https://github.com/erikyo>",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/wp-blocks/isotolanguage.git"
-  },
-  "bugs": {
-    "url": "https://github.com/wp-blocks/isotolanguage/issues"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.23.7",
-    "@babel/preset-env": "^7.23.7",
-    "@babel/preset-typescript": "^7.23.3",
-    "@jest/globals": "^29.7.0",
-    "@rollup/plugin-terser": "^0.4.4",
-    "@types/jest": "^29.5.11",
-    "@types/node": "^20.10.6",
-    "@typescript-eslint/eslint-plugin": "^6.16.0",
-    "@typescript-eslint/parser": "^6.16.0",
-    "babel-jest": "^29.7.0",
-    "concurrently": "^8.2.2",
-    "esbuild": "^0.19.11",
-    "eslint": "^8.55.0",
-    "eslint-config-standard": "^17.1.0",
-    "eslint-plugin-n": "^16.6.0",
-    "eslint-plugin-promise": "^6.1.1",
-    "husky": "^8.0.3",
-    "jest": "^29.7.0",
-    "prettier": "^3.1.1",
-    "rollup": "^4.9.2",
-    "rollup-plugin-typescript2": "^0.36.0",
-    "typescript": "^5.3.3"
-  },
-  "lint-staged": {
-    "tests/**/*.{ts}": [
-      "prettier --write"
-    ],
-    "src/**/*.{ts}": [
-      "eslint --fix",
-      "prettier --write",
-      "tsc --build"
-    ]
-  }
+	"name": "isotolanguage",
+	"version": "1.3.0",
+	"description": "light and fast module to convert iso country and languages codes into country names, there is no unnecessary stuff only the bare essentials",
+	"license": "ISC",
+	"main": "./lib/index.cjs",
+	"module": "./lib/index.js",
+	"type": "module",
+	"unpkg": "lib/browser/ISOToLanguage.js",
+	"jsdelivr": "lib/browser/ISOToLanguage.js",
+	"exports": {
+		".": {
+			"types": "./lib/cjs/esm/index.d.ts",
+			"require": {
+				"default": "./lib/index.cjs",
+				"types": "./lib/index.d.cts"
+			},
+			"import": {
+				"default": "./lib/index.js",
+				"types": "./lib/index.d.ts"
+			},
+			"browser": "./lib/browser/ISOToLanguage.js"
+		}
+	},
+	"keywords": [
+		"iso",
+		"language",
+		"country",
+		"country code",
+		"locale format",
+		"IETF",
+		"ISO 3166-1",
+		"language tag"
+	],
+	"files": [
+		"lib/",
+		"tests/",
+		"*.json",
+		".gitignore",
+		".eslintrc.js",
+		"LICENSE",
+		"README.md"
+	],
+	"author": "Erik Golinelli <https://github.com/erikyo>",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/wp-blocks/isotolanguage.git"
+	},
+	"bugs": {
+		"url": "https://github.com/wp-blocks/isotolanguage/issues"
+	},
+	"sideEffects": false,
+	"devDependencies": {
+		"@types/node": "^20.10.6",
+		"@vitest/coverage-v8": "^1.6.0",
+		"concurrently": "^8.2.2",
+		"esbuild": "^0.21.2",
+		"husky": "^8.0.3",
+		"tsup": "^8.0.2",
+		"typescript": "^5.3.3",
+		"vitest": "^1.6.0"
+	},
+	"lint-staged": {
+		"tests/**/*.{ts}": ["npx @biomejs/biome check --apply tests"],
+		"src/**/*.{ts}": ["npx @biomejs/biome check --apply src", "tsc --build"]
+	},
+	"scripts": {
+		"prepare": "husky install",
+		"lint": "npx @biomejs/biome check --apply src tests",
+		"clean": "node bin/clean.mjs",
+		"watch": "npx esbuild src/index.ts --outfile=lib/browser/isoToLanguage.js --global-name=isoToLanguage --allow-overwrite --watch --bundle --sourcemap",
+		"build": "pnpm run clean && concurrently pnpm:build-* ",
+		"build-node": "tsup src/**/*.ts lib",
+		"build-browser": "npx esbuild src/index.ts --outfile=lib/browser/isoToLanguage.js --global-name=isoToLanguage  --allow-overwrite --bundle --minify --sourcemap",
+		"test": "vitest --coverage"
+	},
+	"tsup": {
+		"skipNodeModulesBundle": true,
+		"dts": true,
+		"bundle": false,
+		"treeshake": true,
+		"minify": true,
+		"clean": true,
+		"shims": true,
+		"cjsInterop": true,
+		"target": "node16",
+		"moduleName": "isoToLanguage",
+		"format": ["esm", "cjs"],
+		"tsconfig": "./tsconfig.json",
+		"entry": ["src/**/*.ts"],
+		"outDir": "lib"
+	}
 }
