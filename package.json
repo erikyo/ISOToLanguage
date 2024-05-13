@@ -10,7 +10,7 @@
 	"jsdelivr": "lib/browser/ISOToLanguage.js",
 	"exports": {
 		".": {
-			"types": "./lib/cjs/esm/index.d.ts",
+			"types": "./lib/index.d.ts",
 			"require": {
 				"default": "./lib/index.cjs",
 				"types": "./lib/index.d.cts"
