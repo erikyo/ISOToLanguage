@@ -14,7 +14,8 @@ export function isExtraField(fields: string[]): fields is CountryExtraFields[] {
 		fields.includes("flag") ||
 		fields.includes("emoji") ||
 		fields.includes("emojiU") ||
-		fields.includes("coordinates")
+		fields.includes("coordinates") ||
+		fields.includes("coordinatesDMS")
 	);
 }
 
@@ -64,4 +65,33 @@ export function parseIso5Code(isoCode: string) {
 		separator: isoCode[2],
 		country: isoCode[3] + isoCode[4],
 	};
+}
+
+/**
+ * Returns a formatted string of coordinates in DMS format.
+ *
+ * @param coordinates
+ */
+export function formatCoordinatesToDMS(coordinates: number[]): string {
+	const [latitude, longitude] = coordinates;
+
+	const formatCoordinate = (coord: number, isLatitude: boolean) => {
+		const absolute = Math.abs(coord);
+		const degrees = Math.floor(absolute);
+		const minutes = Math.floor((absolute - degrees) * 60);
+		const seconds = ((absolute - degrees - minutes / 60) * 3600).toFixed(1);
+		const direction = isLatitude
+			? coord >= 0
+				? "N"
+				: "S"
+			: coord >= 0
+				? "E"
+				: "W";
+		return `${degrees}°${minutes}'${seconds}"${direction}`;
+	};
+
+	const latitudeDMS = formatCoordinate(latitude, true);
+	const longitudeDMS = formatCoordinate(longitude, false);
+
+	return `${latitudeDMS}, ${longitudeDMS}`;
 }

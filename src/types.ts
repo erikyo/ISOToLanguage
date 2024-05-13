@@ -94,6 +94,7 @@ export type CountryDataCustomFields =
 	| "language-iso3"
 	| "country-extra"
 	| "country-geo"
+	| "coordinatesDMS"
 	| "all";
 export type CountryDataExtraFields =
 	| CountryExtendedFields

@@ -1,11 +1,6 @@
 import { describe, expect, test } from "vitest";
-import {
-	type Country,
-	type ISOCountryCode,
-	type ISOLangCode,
-	ISOLanguage,
-} from "../lib/types";
 import { getCountriesByLanguage, getGroupedBy } from "../src/";
+import type { Country, ISOCountryCode, ISOLangCode } from "../src/types";
 import {} from "../src/types";
 
 describe("getGroupedBy", () => {

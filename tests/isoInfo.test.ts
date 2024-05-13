@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { isoInfo } from "../src/";
+import { getIso, isoInfo } from "../src/";
 
 describe("isoInfo", () => {
 	it("should return the information about the iso language ", () => {
@@ -46,5 +46,10 @@ describe("isoInfo", () => {
 			...expected,
 			type: "language-code",
 		});
+	});
+	it("should return the information about the iso language", () => {
+		const infoString2 = getIso("Italia", "country", "coordinatesDMS");
+
+		expect(infoString2).toBe("41°52'18.8\"N, 12°34'2.6\"E");
 	});
 });

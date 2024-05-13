@@ -13,7 +13,7 @@ import type {
 	ISOLangCode,
 	LanguageData,
 } from "./types";
-import { isExtraField, isGeoField } from "./utils";
+import { formatCoordinatesToDMS, isExtraField, isGeoField } from "./utils";
 import { validateISO } from "./validation";
 
 const wikiMediaUrl = "https://upload.wikimedia.org/wikipedia/commons/";
@@ -84,13 +84,13 @@ export function getCountry(
 				countryData = { ...countryData, ...countriesGeo[countryIso] };
 			} else if (isGeoField(fields)) {
 				// merge the country geo data
-				fields.forEach((field) => {
+				for (const field of fields) {
 					// add the geo field to the country data if it exists
 					if (field in countriesGeo[countryIso as ISOCountryCode]) {
 						countryData[field] =
 							countriesGeo[countryIso as ISOCountryCode][field];
 					}
-				});
+				}
 			}
 
 			if (fields.includes("country-extra")) {
@@ -99,16 +99,24 @@ export function getCountry(
 				countryData.flag = wikiMediaUrl + countryData.flag;
 			} else if (isExtraField(fields)) {
 				// merge the country extra data
-				fields.forEach((field) => {
+				for (const field of fields) {
 					// add the extra field to the country data if it exists
 					if (field in countriesExtra[countryIso as ISOCountryCode]) {
 						countryData[field] = countriesExtra[countryIso as ISOCountryCode][
 							field
 						] as string;
 					}
-				});
+					if (field.includes("coordinatesDMS")) {
+						if ("coordinates" in countriesExtra[countryIso as ISOCountryCode]) {
+							countryData.coordinatesDMS = formatCoordinatesToDMS(
+								countriesExtra[countryIso as ISOCountryCode]
+									.coordinates as number[],
+							);
+						}
+					}
+				}
 				if (fields.includes("flag")) {
-					countryData.flag = wikiMediaUrl + countryData.flag + ".svg";
+					countryData.flag = `${wikiMediaUrl + countryData.flag}.svg`;
 				}
 			}
 
@@ -185,16 +193,18 @@ export function getCountry(
 				}
 			} else {
 				// Return the country data
-				newCountryData = countryData;
+				newCountryData = countryData as Record<string, string>;
 			}
 
 			if (fields.length === 1 && fields[0] in newCountryData) {
 				// Return the new country data
 				return Object.values(countryData)[1] as CountryData;
 			}
+
 			if (Object.keys(newCountryData).length === fields.length) {
 				return newCountryData as CountryData;
 			}
+
 			return countryData;
 		}
 
