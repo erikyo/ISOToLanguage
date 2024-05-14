@@ -32,15 +32,7 @@
 		"ISO 3166-1",
 		"language tag"
 	],
-	"files": [
-		"lib/",
-		"tests/",
-		"*.json",
-		".gitignore",
-		".eslintrc.js",
-		"LICENSE",
-		"README.md"
-	],
+	"files": ["lib/", "tests/", "*.json", ".gitignore", "LICENSE", "*.md"],
 	"author": "Erik Golinelli <https://github.com/erikyo>",
 	"repository": {
 		"type": "git",
