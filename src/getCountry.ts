@@ -121,7 +121,7 @@ export function getCountry(
 			}
 
 			if (fields.includes("locale")) {
-				const localeCode = country.languages.map(
+				countryData.locale = country.languages.map(
 					(langIso) =>
 						formatIso(
 							langIso as ISOLangCode,
@@ -129,11 +129,10 @@ export function getCountry(
 							"locale",
 						) ?? countryIso,
 				) as string[];
-				countryData.locale = localeCode;
 			}
 
 			if (fields.includes("language-code")) {
-				const isoCodes = country.languages?.map(
+				countryData["language-code"] = country.languages?.map(
 					(langIso) =>
 						formatIso(
 							langIso as ISOLangCode,
@@ -141,7 +140,6 @@ export function getCountry(
 							"language-code",
 						) ?? countryIso,
 				) as string[];
-				countryData["language-code"] = isoCodes;
 			}
 
 			// If the requested fields is the code, return the iso country code

@@ -107,7 +107,7 @@ describe("ISO", () => {
 	it("should return a field for the provided original name", () => {
 		const isoCode = "Italia";
 		const result = getIso(isoCode, "country", "name");
-		const expectedOriginal = countriesIso["IT"].name;
+		const expectedOriginal = countriesIso.IT.name;
 
 		expect(result).toEqual(expectedOriginal);
 	});

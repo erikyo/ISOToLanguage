@@ -44,7 +44,8 @@ export function getLanguage(
 			// if the fields are iso, return the isoCode otherwise create the array of fields to return
 			if (fields === "iso2") {
 				return isoCode;
-			} else if (fields === "all") {
+			}
+			if (fields === "all") {
 				fields = ["iso2", "name", "original", "iso3"];
 			} else if (typeof fields === "string") {
 				fields = [fields as LanguageDataFields];
@@ -54,14 +55,13 @@ export function getLanguage(
 			const collected: Partial<LanguageData> = {};
 			if (Object.keys(fields).length === 1) {
 				return language[Object.values(fields)[0] as LanguageFields];
-			} else {
-				for (const field of fields) {
-					const key = field;
-					if (key === "iso2") {
-						collected["iso2"] = isoCode as ISOLangCode;
-					} else {
-						collected[key as LanguageFields] = language[key as LanguageFields];
-					}
+			}
+			for (const field of fields) {
+				const key = field;
+				if (key === "iso2") {
+					collected.iso2 = isoCode as ISOLangCode;
+				} else {
+					collected[key as LanguageFields] = language[key as LanguageFields];
 				}
 			}
 
