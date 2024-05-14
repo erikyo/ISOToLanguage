@@ -1,36 +1,29 @@
 {
-  "compilerOptions": {
-    "target": "ES2022",
-    "module": "ES2022",
-    "moduleResolution": "node",    // Search under node_modules for non-relative imports.
-    // Process & infer types from .js files.
-    "pretty": true,
-    "sourceMap": true,
-    "strict": true, // Enable the strictest settings like strictNullChecks & noImplicitAny.
-    "isolatedModules": true, // Disallow features that require cross-file information for emitting.
-    "allowSyntheticDefaultImports": true,
-    "skipLibCheck": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "declaration": true,
-    "forceConsistentCasingInFileNames": true,
-    "rootDir": "src",
-    "outDir": "lib",
-    "esModuleInterop": true,
-    // "verbatimModuleSyntax": true,
-    "typeRoots": [
-      "node_modules/@types/"
-    ]
-  },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "coverage",
-    "docs",
-    "example",
-    "lib",
-    "src/isoToLanguage.ts"
-  ]
+	"compilerOptions": {
+		"target": "ES2022",
+		"module": "ES2022",
+		"moduleResolution": "node",
+		"pretty": true,
+		"sourceMap": true,
+		"strict": true,
+		"isolatedModules": true,
+		"allowSyntheticDefaultImports": true,
+		"skipLibCheck": true,
+		"noImplicitAny": true,
+		"strictNullChecks": true,
+		"declaration": true,
+		"forceConsistentCasingInFileNames": true,
+		"rootDir": "src",
+		"outDir": "lib",
+		"esModuleInterop": true
+	},
+	"include": ["src/**/*", "data/**/*"],
+	"exclude": [
+		"node_modules",
+		"coverage",
+		"docs",
+		"example",
+		"lib",
+		"src/isoToLanguage.ts"
+	]
 }

@@ -32,15 +32,7 @@
 		"ISO 3166-1",
 		"language tag"
 	],
-	"files": [
-		"lib/",
-		"tests/",
-		"*.json",
-		".gitignore",
-		".eslintrc.js",
-		"LICENSE",
-		"README.md"
-	],
+	"files": ["lib/", "tests/", "*.json", ".gitignore", "LICENSE", "*.md"],
 	"author": "Erik Golinelli <https://github.com/erikyo>",
 	"repository": {
 		"type": "git",
@@ -66,12 +58,13 @@
 	},
 	"scripts": {
 		"prepare": "husky install",
-		"lint": "npx @biomejs/biome check --apply src tests",
+		"lint": "npx @biomejs/biome check --apply src tests/*.ts",
 		"clean": "node bin/clean.mjs",
 		"watch": "npx esbuild src/index.ts --outfile=lib/browser/isoToLanguage.js --global-name=isoToLanguage --allow-overwrite --watch --bundle --sourcemap",
-		"build": "pnpm run clean && concurrently pnpm:build-* ",
-		"build-node": "tsup src/**/*.ts lib",
-		"build-browser": "npx esbuild src/index.ts --outfile=lib/browser/isoToLanguage.js --global-name=isoToLanguage  --allow-overwrite --bundle --minify --sourcemap",
+		"build": "pnpm run clean && concurrently pnpm:build-*",
+		"build-node": "tsup",
+		"build-dataset": "esbuild src/data/*.ts --outdir=lib/data/ --minify",
+		"build-browser": "esbuild src/index.ts --outfile=lib/browser/isoToLanguage.js --global-name=isoToLanguage  --allow-overwrite --bundle --minify --sourcemap",
 		"test": "vitest --coverage"
 	},
 	"tsup": {
@@ -80,14 +73,13 @@
 		"bundle": false,
 		"treeshake": true,
 		"minify": true,
-		"clean": true,
 		"shims": true,
 		"cjsInterop": true,
 		"target": "node16",
 		"moduleName": "isoToLanguage",
 		"format": ["esm", "cjs"],
 		"tsconfig": "./tsconfig.json",
-		"entry": ["src/**/*.ts"],
+		"entry": ["src/*.ts"],
 		"outDir": "lib"
 	}
 }

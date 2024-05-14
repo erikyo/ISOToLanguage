@@ -134,7 +134,7 @@ export const countriesIso = {
 	BH: {
 		languages: ["ar"],
 		name: "Bahrain",
-		original: "‏البحرين",
+		original: "البحرين",
 		iso3: "BHR",
 	},
 	BI: {
@@ -212,7 +212,7 @@ export const countriesIso = {
 	BY: {
 		languages: ["be", "ru"],
 		name: "Belarus",
-		original: "Белару́сь",
+		original: "Беларусь",
 		iso3: "BLR",
 	},
 	BZ: {
@@ -386,7 +386,7 @@ export const countriesIso = {
 	EG: {
 		languages: ["ar"],
 		name: "Egypt",
-		original: "مصر‎",
+		original: "مصر�",
 		iso3: "EGY",
 	},
 	EH: {
@@ -614,7 +614,7 @@ export const countriesIso = {
 	IL: {
 		languages: ["he", "ar"],
 		name: "Israel",
-		original: "יִשְׂרָאֵל",
+		original: "ישראל",
 		iso3: "ISR",
 	},
 	IM: {
@@ -626,7 +626,7 @@ export const countriesIso = {
 	IN: {
 		languages: ["hi", "en"],
 		name: "India",
-		original: "भारत",
+		original: "भरत",
 		iso3: "IND",
 	},
 	IO: {
@@ -812,7 +812,7 @@ export const countriesIso = {
 	LY: {
 		languages: ["ar"],
 		name: "Libya",
-		original: "‏ليبيا",
+		original: "ليبيا",
 		iso3: "LBY",
 	},
 	MA: {
@@ -854,7 +854,7 @@ export const countriesIso = {
 	MH: {
 		languages: ["en", "mh"],
 		name: "Marshall Islands",
-		original: "M̧ajeļ",
+		original: "Majeļ",
 		iso3: "MHL",
 	},
 	MK: {
@@ -872,7 +872,7 @@ export const countriesIso = {
 	MM: {
 		languages: ["my"],
 		name: "Myanmar (Burma)",
-		original: "မြန်မာ",
+		original: "မနမာ",
 		iso3: "MMR",
 	},
 	MN: {
@@ -1004,7 +1004,7 @@ export const countriesIso = {
 	NP: {
 		languages: ["ne"],
 		name: "Nepal",
-		original: "नेपाल",
+		original: "नपल",
 		iso3: "NPL",
 	},
 	NR: {
@@ -1472,7 +1472,7 @@ export const countriesIso = {
 	YE: {
 		languages: ["ar"],
 		name: "Yemen",
-		original: "اليَمَن",
+		original: "اليمن",
 		iso3: "YEM",
 	},
 	YT: {

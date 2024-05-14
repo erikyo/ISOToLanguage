@@ -20,9 +20,11 @@ export function getKeyValue(
 	const unpackData = (data: unknown, field?: string): string[] => {
 		if (typeof data === "string") {
 			return [data];
-		} else if (Array.isArray(data)) {
+		}
+		if (Array.isArray(data)) {
 			return data.flatMap((item) => unpackData(item, field));
-		} else if (typeof data === "object" && data !== null) {
+		}
+		if (typeof data === "object" && data !== null) {
 			if (field && field in data) {
 				return [data[field as keyof typeof data]];
 			}
