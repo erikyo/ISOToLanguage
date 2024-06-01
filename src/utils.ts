@@ -4,7 +4,7 @@ import type {
 	CountryGeoFields,
 	IsoCodeFormat,
 	LanguageFields,
-} from "./types";
+} from "./types.js";
 
 export function isExtraField(fields: string[]): fields is CountryExtraFields[] {
 	return (

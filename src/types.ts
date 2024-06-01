@@ -1,6 +1,6 @@
-import type { countriesIso } from "./data/countries-iso";
-import type { langIso } from "./data/lang-iso";
-import type { LangIso3 } from "./data/lang-iso3";
+import type { countriesIso } from "./data/countries-iso.js";
+import type { langIso } from "./data/lang-iso.js";
+import type { LangIso3 } from "./data/lang-iso3.js";
 
 /** Type of ISO */
 export type IsoType = "country" | "language";

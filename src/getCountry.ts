@@ -1,8 +1,8 @@
-import { countriesExtra } from "./data/countries-extra";
-import { countriesGeo } from "./data/countries-geo";
-import { countriesIso } from "./data/countries-iso";
-import { formatIso } from "./formatIso";
-import { getIso } from "./getIso";
+import { countriesExtra } from "./data/countries-extra.js";
+import { countriesGeo } from "./data/countries-geo.js";
+import { countriesIso } from "./data/countries-iso.js";
+import { formatIso } from "./formatIso.js";
+import { getIso } from "./getIso.js";
 import type {
 	Country,
 	CountryData,
@@ -13,8 +13,8 @@ import type {
 	ISOLangCode,
 	LanguageData,
 } from "./types";
-import { formatCoordinatesToDMS, isExtraField, isGeoField } from "./utils";
-import { validateISO } from "./validation";
+import { formatCoordinatesToDMS, isExtraField, isGeoField } from "./utils.js";
+import { validateISO } from "./validation.js";
 
 const wikiMediaUrl = "https://upload.wikimedia.org/wikipedia/commons/";
 
