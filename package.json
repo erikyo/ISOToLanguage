@@ -3,11 +3,11 @@
 	"version": "1.3.0",
 	"description": "light and fast module to convert iso country and languages codes into country names, there is no unnecessary stuff only the bare essentials",
 	"license": "ISC",
+	"type": "module",
 	"main": "./lib/index.cjs",
 	"module": "./lib/index.js",
-	"type": "module",
-	"unpkg": "lib/browser/ISOToLanguage.js",
-	"jsdelivr": "lib/browser/ISOToLanguage.js",
+	"unpkg": "lib/browser/isoToLanguage.js",
+	"jsdelivr": "lib/browser/isoToLanguage.js",
 	"exports": {
 		".": {
 			"types": "./lib/index.d.ts",
@@ -19,7 +19,7 @@
 				"default": "./lib/index.js",
 				"types": "./lib/index.d.ts"
 			},
-			"browser": "./lib/browser/ISOToLanguage.js"
+			"browser": "./lib/browser/isoToLanguage.js"
 		}
 	},
 	"keywords": [
