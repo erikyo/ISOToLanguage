@@ -1,12 +1,12 @@
-import { langIso } from "./data/lang-iso";
+import { langIso } from "./data/lang-iso.js";
 import type {
 	ISOLangCode,
 	Language,
 	LanguageData,
 	LanguageDataFields,
 	LanguageFields,
-} from "./types";
-import { validateISO } from "./validation";
+} from "./types.js";
+import { validateISO } from "./validation.js";
 
 /**
  * Retrieves the ISO language object based on the provided language code.
@@ -45,18 +45,20 @@ export function getLanguage(
 			if (fields === "iso2") {
 				return isoCode;
 			}
+			/** @type {string[]} fieldsArray The array of fields to return */
+			let fieldsArray: string[] = [];
 			if (fields === "all") {
-				fields = ["iso2", "name", "original", "iso3"];
+				fieldsArray = ["iso2", "name", "original", "iso3"];
 			} else if (typeof fields === "string") {
-				fields = [fields as LanguageDataFields];
+				fieldsArray = [fields as LanguageDataFields];
 			}
 
-			// if the fields are not an iso, return the fields
+			// if the fields are not an iso, return the fieldsArray
 			const collected: Partial<LanguageData> = {};
-			if (Object.keys(fields).length === 1) {
-				return language[Object.values(fields)[0] as LanguageFields];
+			if (Object.keys(fieldsArray).length === 1) {
+				return language[Object.values(fieldsArray)[0] as LanguageFields];
 			}
-			for (const field of fields) {
+			for (const field of fieldsArray) {
 				const key = field;
 				if (key === "iso2") {
 					collected.iso2 = isoCode as ISOLangCode;

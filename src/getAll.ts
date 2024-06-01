@@ -12,20 +12,20 @@ import type {
 	IsoType,
 	LanguageData,
 	LanguageDataFields,
-} from "./types";
+} from "./types.js";
 
-import { countriesIso } from "./data/countries-iso";
-import { langIso } from "./data/lang-iso";
-import { LangIso3 } from "./data/lang-iso3";
-import { formatIso } from "./formatIso";
-import { getCountry } from "./getCountry";
-import { getIso } from "./getIso";
+import { countriesIso } from "./data/countries-iso.js";
+import { langIso } from "./data/lang-iso.js";
+import { LangIso3 } from "./data/lang-iso3.js";
+import { formatIso } from "./formatIso.js";
+import { getCountry } from "./getCountry.js";
+import { getIso } from "./getIso.js";
 import {
 	isCountryFormat,
 	isExtraField,
 	isGeoField,
 	isLanguageFormat,
-} from "./utils";
+} from "./utils.js";
 
 /**
  * Returns an array of languages divided by a custom separator.

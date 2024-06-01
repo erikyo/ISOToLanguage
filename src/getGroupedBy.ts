@@ -1,12 +1,12 @@
-import { countriesGeo } from "./data/countries-geo";
-import { countriesIso } from "./data/countries-iso";
+import { countriesGeo } from "./data/countries-geo.js";
+import { countriesIso } from "./data/countries-iso.js";
 import type {
 	Country,
 	CountryData,
 	CountryGeo,
 	ISOCountryCode,
 	IsoCode,
-} from "./types";
+} from "./types.js";
 
 export function getGroupedBy(
 	field: "region" | "continent" | "subRegion",

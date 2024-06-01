@@ -1,8 +1,8 @@
-import { tryCountriesFallback } from "./fallbacks";
-import { getIso } from "./getIso";
-import type { IsoCodeFormat } from "./types";
-import { getSeparator } from "./utils";
-import { validateISO } from "./validation";
+import { tryCountriesFallback } from "./fallbacks.js";
+import { getIso } from "./getIso.js";
+import type { IsoCodeFormat } from "./types.js";
+import { getSeparator } from "./utils.js";
+import { validateISO } from "./validation.js";
 
 /**
  * Formats the language and country into a single string.

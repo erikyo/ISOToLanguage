@@ -1,4 +1,4 @@
-import type { ISOCountryGeo } from "../types";
+import type { ISOCountryGeo } from "../types.js";
 
 export const countriesGeo: ISOCountryGeo = {
 	AX: {

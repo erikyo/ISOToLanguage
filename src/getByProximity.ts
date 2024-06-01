@@ -1,5 +1,5 @@
-import { countriesExtra } from "./data/countries-extra";
-import { getIso } from "./getIso";
+import { countriesExtra } from "./data/countries-extra.js";
+import { getIso } from "./getIso.js";
 
 /**
  * Calculate the distance between two sets of coordinates using the Haversine formula.

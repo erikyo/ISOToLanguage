@@ -1,6 +1,6 @@
-import { countriesIso } from "./data/countries-iso";
-import { getIso } from "./getIso";
-import type { CountryDataFields } from "./types";
+import { countriesIso } from "./data/countries-iso.js";
+import { getIso } from "./getIso.js";
+import type { CountryDataFields } from "./types.js";
 
 /**
  * Generates an array of objects suitable for React Select options based on the specified field.

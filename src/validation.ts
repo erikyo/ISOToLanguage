@@ -1,6 +1,6 @@
-import { countriesIso } from "./data/countries-iso";
-import { langIso } from "./data/lang-iso";
-import type { IsoCodeFormat, IsoType } from "./types";
+import { countriesIso } from "./data/countries-iso.js";
+import { langIso } from "./data/lang-iso.js";
+import type { IsoCodeFormat, IsoType } from "./types.js";
 
 function isValidCountry(iso: string): boolean {
 	return iso in countriesIso;

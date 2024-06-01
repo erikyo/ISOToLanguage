@@ -1,5 +1,5 @@
-import { getCountry } from "./getCountry";
-import { getLanguage } from "./getLanguage";
+import { getCountry } from "./getCountry.js";
+import { getLanguage } from "./getLanguage.js";
 import type {
 	CountryDataExtended,
 	CountryDataFields,
@@ -9,7 +9,7 @@ import type {
 	IsoType,
 	LanguageData,
 	LanguageDataFields,
-} from "./types";
+} from "./types.js";
 
 /**
  * Retrieves the ISO value for a given code, type, and fields.
