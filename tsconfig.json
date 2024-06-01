@@ -7,7 +7,6 @@
 		"sourceMap": true,
 		"strict": true,
 		"isolatedModules": true,
-		"allowSyntheticDefaultImports": true,
 		"skipLibCheck": true,
 		"noImplicitAny": true,
 		"strictNullChecks": true,
